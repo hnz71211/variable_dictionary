@@ -1,6 +1,7 @@
 package com.lxh.varDict.dictionary.service.impl;
 
 import com.lxh.varDict.dictionary.entity.VarGroup;
+import com.lxh.varDict.dictionary.entity.VarGroupFocus;
 import com.lxh.varDict.dictionary.mapper.GroupMapper;
 import com.lxh.varDict.dictionary.service.GroupService;
 import com.lxh.varDict.dictionary.vo.VarGroupVO;
@@ -10,7 +11,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,11 +35,19 @@ public class GroupServiceImpl implements GroupService {
   }
 
   @Override
+  @Transactional(rollbackFor = { Exception.class })
   public void insertVarGroup(VarGroupVO varGroupVO) {
     VarGroup varGroup = new VarGroup();
+    String groupId = UUID.randomUUID().toString();
     BeanUtils.copyProperties(varGroupVO, varGroup);
-    varGroup.setId(UUID.randomUUID().toString());
+    varGroup.setId(groupId);
     groupMapper.insertVarGroup(varGroup);
+
+    VarGroupFocus varGroupFocus =
+            new VarGroupFocus("",
+                    Arrays.asList(new String[]{groupId}),
+                    1);
+    groupMapper.insertVarGroupFocus(varGroupFocus);
   }
 
   @Override
@@ -49,12 +60,21 @@ public class GroupServiceImpl implements GroupService {
   }
 
   @Override
-  public void insertVarGroupFocus(String groupId, List<String> focusList) throws VarException {
+  public void insertVarGroupFocus(String follower, List<String> groupIds) throws VarException {
+    VarGroupFocus varGroupFocus =
+            new VarGroupFocus("",
+                    groupIds,
+                    null);
     try {
-      groupMapper.insertVarGroupFocus(groupId, focusList);
+      groupMapper.insertVarGroupFocus(varGroupFocus);
     }catch (DataAccessException e) {
       throw new VarException(e.getMessage());
     }
+  }
+
+  @Override
+  public void deleteVarGroupFocus(String follower, String groupId) {
+    groupMapper.deleteVarGroupFocus(follower, groupId);
   }
 
   /**

@@ -17,8 +17,10 @@ public class VarGroup {
 
   private String name;
 
-  private String createPerson;
+  private String createUser;
 
   private Date createDate;
+
+  private Integer visible;
 
 }

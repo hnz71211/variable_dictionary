@@ -15,6 +15,6 @@ public class VarGroupVO {
 
   private String name;
 
-  private String createPerson;
+  private String createUser;
 
 }

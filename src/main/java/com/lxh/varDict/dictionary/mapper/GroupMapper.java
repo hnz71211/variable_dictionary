@@ -1,10 +1,8 @@
 package com.lxh.varDict.dictionary.mapper;
 
 import com.lxh.varDict.dictionary.entity.VarGroup;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import com.lxh.varDict.dictionary.entity.VarGroupFocus;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -34,12 +32,15 @@ public interface GroupMapper {
 
   @Insert({"<script>"
           + "INSERT INTO var_group_focus ("
-          + "group_id, focus) VALUES "
-          + "<foreach collection=\"focusList\" item=\"focus\" separator=\",\">"
-          + "(#{groupId},"
-          + "#{focus})"
+          + "follower, groupId, state) VALUES "
+          + "<foreach collection=\"varGroupFocus.groupIds\" item=\"groupId\" separator=\",\">"
+          + "(#{varGroupFocus.follower},"
+          + "#{groupId}"
+          + "#{state})"
           + "</foreach>"
           + "</script>"})
-  int insertVarGroupFocus(String groupId, List<String> focusList);
+  int insertVarGroupFocus(VarGroupFocus varGroupFocus);
 
+  @Delete("delete from var_group_focus where group_id = #{groupId} and focus = #{focus}")
+  void deleteVarGroupFocus(String groupId, String focus);
 }

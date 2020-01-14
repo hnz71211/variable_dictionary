@@ -2,6 +2,8 @@ package com.lxh.varDict.dictionary.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @ClassName: VarGroupFocus
  * @Description:
@@ -11,8 +13,15 @@ import lombok.Data;
 @Data
 public class VarGroupFocus {
 
-  private String groupId;
+  private String follower;
 
-  private String focus;
+  private List<String> groupId;
 
+  private Integer state;
+
+  public VarGroupFocus(String follower, List<String> groupId, Integer state) {
+    this.follower = follower;
+    this.groupId = groupId;
+    this.state = state;
+  }
 }

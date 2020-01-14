@@ -40,10 +40,20 @@ public interface GroupService {
   /**
    * @Title: insertVarGroupFocus
    * @Description: 添加关注
-   * @Param: [groupId, focusList]
+   * @Param: [follower, groupIds]
    * @Return: void
    * @Author: hexli
    * @Date: 2020-01-14 11:14
    **/
-  void insertVarGroupFocus(String groupId, List<String> focusList) throws VarException;
+  void insertVarGroupFocus(String follower, List<String> groupIds) throws VarException;
+
+  /**
+   * @Title: deleteVarGroupFocus
+   * @Description:
+   * @Param: [groupId, focus]
+   * @Return: void
+   * @Author: hexli
+   * @Date: 2020-01-14 15:08
+   **/
+  void deleteVarGroupFocus(String groupId, String focus);
 }
