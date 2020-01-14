@@ -17,8 +17,6 @@ public class VarGroup {
 
   private String name;
 
-  private String focus;
-
   private String createPerson;
 
   private Date createDate;

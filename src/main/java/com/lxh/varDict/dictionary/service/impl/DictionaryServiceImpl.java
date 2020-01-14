@@ -40,9 +40,6 @@ public class DictionaryServiceImpl implements DictionaryService {
     VarGroup varGroup = new VarGroup();
     BeanUtils.copyProperties(varGroupVO, varGroup);
     varGroup.setId(UUID.randomUUID().toString());
-    if (!CollectionUtils.isEmpty(varGroupVO.getParent())) {
-      varGroup.setFocus(String.join(Cons.VARGROUP_PARENTS_SEPARATION_CHARACTER, varGroupVO.getParent()));
-    }
     dictionaryMapper.insertVarGroup(varGroup);
   }
 
@@ -64,11 +61,12 @@ public class DictionaryServiceImpl implements DictionaryService {
    * @Date: 2020-01-05 21:10
    **/
   private List<UUID> queryVarGroupFocus(String id) {
-    VarGroup varGroup = queryById(id);
-    String parents = varGroup.getFocus();
-    return StringUtils.isEmpty(parents) ?
-            null : Arrays.asList(parents.split(Cons.VARGROUP_PARENTS_SEPARATION_CHARACTER))
-            .stream().map(parent -> UUID.fromString(parent)).collect(Collectors.toList());
+//    VarGroup varGroup = queryById(id);
+//    String parents = varGroup.getFocus();
+//    return StringUtils.isEmpty(parents) ?
+//            null : Arrays.asList(parents.split(Cons.VARGROUP_PARENTS_SEPARATION_CHARACTER))
+//            .stream().map(parent -> UUID.fromString(parent)).collect(Collectors.toList());
+    return null;
   }
 
 }
