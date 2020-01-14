@@ -2,8 +2,6 @@ package com.lxh.varDict.dictionary.entity;
 
 import lombok.Data;
 
-import java.util.UUID;
-
 /**
  * @ClassName: VarDict
  * @Description:

@@ -34,10 +34,11 @@ public class DictionaryController {
       dictionaryService.updateVarGroup(varGroupVO);
       return new SuccessVarResponse().setStatus(Status.update_success).setMsg("success ...");
     }catch (VarException e) {
-      return new FailVarResponse().setStatus(Status.update_fail).setMsg("qweqweqwe");
+      return new FailVarResponse().setStatus(Status.update_fail).setMsg(e.getMessage());
     }catch (Exception e) {
       return new FailVarResponse().setStatus(Status.update_fail);
     }
   }
+
 
 }

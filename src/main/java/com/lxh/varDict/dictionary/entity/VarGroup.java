@@ -3,7 +3,6 @@ package com.lxh.varDict.dictionary.entity;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * @ClassName: VarGroup
@@ -18,7 +17,7 @@ public class VarGroup {
 
   private String name;
 
-  private String parent;
+  private String focus;
 
   private String createPerson;
 

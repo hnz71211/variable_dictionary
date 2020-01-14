@@ -16,12 +16,12 @@ public interface DictionaryMapper {
   VarGroup queryVarGroupsById(@Param("id") String id);
 
   @Insert("INSERT INTO var_group("
-          + "id, name, parent, create_person, create_date) VALUES ("
-          + "#{id}, #{name}, #{parent}, #{createPerson}, now())")
+          + "id, name, focus, create_person, create_date) VALUES ("
+          + "#{id}, #{name}, #{focus}, #{createPerson}, now())")
   int insertVarGroup(VarGroup varGroup);
 
   @Update({ "UPDATE var_group "
-          + "SET name = #{name}, parent = #{parent} "
+          + "SET name = #{name}"
           + "WHERE id = #{id}" })
   void updateVarGroup(VarGroup varGroup);
 }

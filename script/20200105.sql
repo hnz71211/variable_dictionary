@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS var_group (
     id varchar(36) primary key comment 'id',
     name VARCHAR(30) NOT NULL comment '分组名称',
-    parent VARCHAR(4000) comment '继承分组',
+    focus VARCHAR(4000) comment '关注分组',
     create_person varchar(36) comment '是否人',
     create_date DATETIME comment '创建时间',
     visible TINYINT default 1 comment '是否可见'

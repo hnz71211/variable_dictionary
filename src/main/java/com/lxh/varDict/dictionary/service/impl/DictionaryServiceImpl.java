@@ -41,7 +41,7 @@ public class DictionaryServiceImpl implements DictionaryService {
     BeanUtils.copyProperties(varGroupVO, varGroup);
     varGroup.setId(UUID.randomUUID().toString());
     if (!CollectionUtils.isEmpty(varGroupVO.getParent())) {
-      varGroup.setParent(String.join(Cons.VARGROUP_PARENTS_SEPARATION_CHARACTER, varGroupVO.getParent()));
+      varGroup.setFocus(String.join(Cons.VARGROUP_PARENTS_SEPARATION_CHARACTER, varGroupVO.getParent()));
     }
     dictionaryMapper.insertVarGroup(varGroup);
   }
@@ -52,8 +52,7 @@ public class DictionaryServiceImpl implements DictionaryService {
     VarGroup varGroup = queryById(varGroupVO.getId());
     VarAssert.notNull(varGroup, "cannot find varGroup, id: " +varGroupVO.getId());
     BeanUtils.copyProperties(varGroupVO, varGroup);
-    // 这里不更新parent字段
-    dictionaryMapper.updateVarGroup(varGroup);
+    dictionaryMapper.updateVarGroup(varGroup);// 这里不更新focus字段
   }
 
   /**
@@ -64,9 +63,9 @@ public class DictionaryServiceImpl implements DictionaryService {
    * @Author: hexli
    * @Date: 2020-01-05 21:10
    **/
-  private List<UUID> queryParentVarGroup(String id) {
+  private List<UUID> queryVarGroupFocus(String id) {
     VarGroup varGroup = queryById(id);
-    String parents = varGroup.getParent();
+    String parents = varGroup.getFocus();
     return StringUtils.isEmpty(parents) ?
             null : Arrays.asList(parents.split(Cons.VARGROUP_PARENTS_SEPARATION_CHARACTER))
             .stream().map(parent -> UUID.fromString(parent)).collect(Collectors.toList());

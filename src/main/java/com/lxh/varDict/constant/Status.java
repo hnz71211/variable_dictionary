@@ -17,7 +17,7 @@ public enum Status {
   save_success(111, "保存成功"),
   save_fail(101, "保存成功"),
   update_success(112, "更新成功"),
-  update_fail(102, "更新成功"),
+  update_fail(102, "更新失败"),
 
   /*系统级错误*/
   base_param_err(10001, "参数错误"),
