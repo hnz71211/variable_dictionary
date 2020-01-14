@@ -1,4 +1,4 @@
-package com.lxh.varDict.constant;
+package com.lxh.varDict.common.constant;
 
 /**
  * 使用枚举统一定义异常码和异常信息

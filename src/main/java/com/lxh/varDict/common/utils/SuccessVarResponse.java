@@ -1,4 +1,4 @@
-package com.lxh.varDict.utils;
+package com.lxh.varDict.common.utils;
 
 import java.util.Map;
 

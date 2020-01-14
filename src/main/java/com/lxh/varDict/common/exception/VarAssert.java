@@ -1,4 +1,4 @@
-package com.lxh.varDict.exception;
+package com.lxh.varDict.common.exception;
 
 import org.springframework.lang.Nullable;
 import org.springframework.util.CollectionUtils;

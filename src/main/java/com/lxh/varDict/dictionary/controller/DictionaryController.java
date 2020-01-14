@@ -1,14 +1,14 @@
 package com.lxh.varDict.dictionary.controller;
 
-import com.lxh.varDict.constant.Status;
+import com.lxh.varDict.common.constant.Status;
 import com.lxh.varDict.dictionary.service.DictionaryService;
 import com.lxh.varDict.dictionary.service.GroupService;
 import com.lxh.varDict.dictionary.vo.VarGroupFocusVO;
 import com.lxh.varDict.dictionary.vo.VarGroupVO;
-import com.lxh.varDict.exception.VarException;
-import com.lxh.varDict.utils.FailVarResponse;
-import com.lxh.varDict.utils.VarResponse;
-import com.lxh.varDict.utils.SuccessVarResponse;
+import com.lxh.varDict.common.exception.VarException;
+import com.lxh.varDict.common.utils.FailVarResponse;
+import com.lxh.varDict.common.utils.VarResponse;
+import com.lxh.varDict.common.utils.SuccessVarResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

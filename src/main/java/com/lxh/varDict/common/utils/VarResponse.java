@@ -1,6 +1,6 @@
-package com.lxh.varDict.utils;
+package com.lxh.varDict.common.utils;
 
-import com.lxh.varDict.constant.Status;
+import com.lxh.varDict.common.constant.Status;
 import org.springframework.util.StringUtils;
 
 import java.util.HashMap;

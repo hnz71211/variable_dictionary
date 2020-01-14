@@ -26,6 +26,7 @@
         <httpclient.version>4.5.10</httpclient.version>
         <httpmime.version>4.3.1</httpmime.version>
         <jsonlib.version>2.4</jsonlib.version>
+        <shiro.version>1.4.0</shiro.version>
     </properties>
 
     <dependencies>
@@ -106,7 +107,11 @@
             <classifier>jdk13</classifier>
             <version>${jsonlib.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
 
 
         <!--redis

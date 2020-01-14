@@ -1,4 +1,4 @@
-package com.lxh.varDict.exception;
+package com.lxh.varDict.common.exception;
 
 /**
  * @ClassName: VarException

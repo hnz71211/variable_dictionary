@@ -2,7 +2,7 @@ package com.lxh.varDict.dictionary.service;
 
 import com.lxh.varDict.dictionary.entity.VarGroup;
 import com.lxh.varDict.dictionary.vo.VarGroupVO;
-import com.lxh.varDict.exception.VarException;
+import com.lxh.varDict.common.exception.VarException;
 
 import java.util.List;
 

@@ -6,7 +6,7 @@
  * @date: 2018年10月10日 下午3:11:30 
  */
 
-package com.lxh.varDict.constant;
+package com.lxh.varDict.common.constant;
 
 /**
  * @ClassName: ResultFlagStr
