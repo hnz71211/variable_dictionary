@@ -1,22 +1,18 @@
 package com.lxh.varDict.dictionary.service.impl;
 
-import com.lxh.varDict.dictionary.constant.Cons;
-import com.lxh.varDict.dictionary.vo.VarGroupVO;
 import com.lxh.varDict.dictionary.entity.VarGroup;
 import com.lxh.varDict.dictionary.mapper.DictionaryMapper;
 import com.lxh.varDict.dictionary.service.DictionaryService;
+import com.lxh.varDict.dictionary.vo.VarGroupVO;
 import com.lxh.varDict.exception.VarAssert;
 import com.lxh.varDict.exception.VarException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 /**
  * @ClassName: DictionaryServiceImpl
@@ -49,24 +45,28 @@ public class DictionaryServiceImpl implements DictionaryService {
     VarGroup varGroup = queryById(varGroupVO.getId());
     VarAssert.notNull(varGroup, "cannot find varGroup, id: " +varGroupVO.getId());
     BeanUtils.copyProperties(varGroupVO, varGroup);
-    dictionaryMapper.updateVarGroup(varGroup);// 这里不更新focus字段
+    dictionaryMapper.updateVarGroup(varGroup);
+  }
+
+  @Override
+  public void insertVarGroupFocus(String groupId, List<String> focusList) throws VarException {
+    try {
+      dictionaryMapper.insertVarGroupFocus(groupId, focusList);
+    }catch (DataAccessException e) {
+      throw new VarException(e.getMessage());
+    }
   }
 
   /**
    * @Title:
-   * @Description: 查询上级组
+   * @Description: 查询关注组
    * @Param:
    * @Return:
    * @Author: hexli
    * @Date: 2020-01-05 21:10
    **/
-  private List<UUID> queryVarGroupFocus(String id) {
-//    VarGroup varGroup = queryById(id);
-//    String parents = varGroup.getFocus();
-//    return StringUtils.isEmpty(parents) ?
-//            null : Arrays.asList(parents.split(Cons.VARGROUP_PARENTS_SEPARATION_CHARACTER))
-//            .stream().map(parent -> UUID.fromString(parent)).collect(Collectors.toList());
-    return null;
+  private List<String> queryVarGroupFocus(String id) {
+    return dictionaryMapper.queryVarGroupFocus(id);
   }
 
 }

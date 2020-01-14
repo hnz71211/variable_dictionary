@@ -10,6 +10,10 @@ import com.lxh.varDict.utils.SuccessVarResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 /**
  * @ClassName: DictionaryController
  * @Description:
@@ -37,6 +41,23 @@ public class DictionaryController {
       return new FailVarResponse().setStatus(Status.update_fail).setMsg(e.getMessage());
     }catch (Exception e) {
       return new FailVarResponse().setStatus(Status.update_fail);
+    }
+  }
+
+  @RequestMapping(value = "/varGroupFocus", method = RequestMethod.GET)
+  public VarResponse addVarGroupFocus() {
+    String groupId = UUID.randomUUID().toString();
+    List<String> focusList = new ArrayList<>();
+    for (int i = 0; i < 3; i++) {
+      focusList.add(UUID.randomUUID().toString());
+    }
+    try {
+      dictionaryService.insertVarGroupFocus(groupId, focusList);
+      return new SuccessVarResponse().setStatus(Status.save_success);
+    }catch (VarException e) {
+      return new FailVarResponse().setStatus(Status.save_fail).setMsg(e.getMessage());
+    }catch (Exception e) {
+      return new FailVarResponse().setStatus(Status.save_fail);
     }
   }
 

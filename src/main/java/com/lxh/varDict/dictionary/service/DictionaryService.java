@@ -4,7 +4,7 @@ import com.lxh.varDict.dictionary.entity.VarGroup;
 import com.lxh.varDict.dictionary.vo.VarGroupVO;
 import com.lxh.varDict.exception.VarException;
 
-import java.util.UUID;
+import java.util.List;
 
 /**
  * @ClassName: DictionaryService
@@ -44,4 +44,13 @@ public interface DictionaryService {
    **/
   void updateVarGroup(VarGroupVO varGroupVO) throws VarException;
 
+  /**
+   * @Title: insertVarGroupFocus
+   * @Description: 添加关注
+   * @Param: [groupId, focusList]
+   * @Return: void
+   * @Author: hexli
+   * @Date: 2020-01-14 11:14
+   **/
+  void insertVarGroupFocus(String groupId, List<String> focusList) throws VarException;
 }

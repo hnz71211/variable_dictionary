@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
+import java.util.List;
 
 @Component
 public interface DictionaryMapper {
@@ -24,4 +24,17 @@ public interface DictionaryMapper {
           + "SET name = #{name}"
           + "WHERE id = #{id}" })
   void updateVarGroup(VarGroup varGroup);
+
+  @Select("SELECT focus FROM var_group_focus WHERE group_id = #{id}")
+  List<String> queryVarGroupFocus(String id);
+
+  @Insert({"<script>"
+          + "INSERT INTO var_group_focus ("
+          + "group_id, focus) VALUES "
+          + "<foreach collection=\"focusList\" item=\"focus\" separator=\",\">"
+          + "(#{groupId},"
+          + "#{focus})"
+          + "</foreach>"
+          + "</script>"})
+  int insertVarGroupFocus(String groupId, List<String> focusList);
 }
