@@ -2,6 +2,7 @@ package com.lxh.varDict.dictionary.controller;
 
 import com.lxh.varDict.constant.Status;
 import com.lxh.varDict.dictionary.service.DictionaryService;
+import com.lxh.varDict.dictionary.service.GroupService;
 import com.lxh.varDict.dictionary.vo.VarGroupVO;
 import com.lxh.varDict.exception.VarException;
 import com.lxh.varDict.utils.FailVarResponse;
@@ -25,17 +26,19 @@ import java.util.UUID;
 public class DictionaryController {
 
   @Autowired
+  private GroupService groupService;
+  @Autowired
   private DictionaryService dictionaryService;
 
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
   public void insertVarGroup(@RequestBody VarGroupVO varGroupVO) {
-    dictionaryService.insertVarGroup(varGroupVO);
+    groupService.insertVarGroup(varGroupVO);
   }
 
   @RequestMapping(value = "/update", method = RequestMethod.POST)
   public VarResponse updateVarGroup(@RequestBody VarGroupVO varGroupVO) {
     try {
-      dictionaryService.updateVarGroup(varGroupVO);
+      groupService.updateVarGroup(varGroupVO);
       return new SuccessVarResponse().setStatus(Status.update_success).setMsg("success ...");
     }catch (VarException e) {
       return new FailVarResponse().setStatus(Status.update_fail).setMsg(e.getMessage());
@@ -52,7 +55,7 @@ public class DictionaryController {
       focusList.add(UUID.randomUUID().toString());
     }
     try {
-      dictionaryService.insertVarGroupFocus(groupId, focusList);
+      groupService.insertVarGroupFocus(groupId, focusList);
       return new SuccessVarResponse().setStatus(Status.save_success);
     }catch (VarException e) {
       return new FailVarResponse().setStatus(Status.save_fail).setMsg(e.getMessage());
