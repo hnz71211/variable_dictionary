@@ -1,9 +1,3 @@
-CREATE TABLE IF NOT EXISTS var_user (
-    id VARCHAR(36) primary key comment 'id',
-    account VARCHAR(30) NOT NULL COMMENT '账号',
-    password VARCHAR(30) NOT NULL COMMENT '密码'
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '用户表';
-
 CREATE TABLE IF NOT EXISTS var_group (
     id VARCHAR(36) primary key comment 'id',
     name VARCHAR(30) NOT NULL comment '分组名称',
