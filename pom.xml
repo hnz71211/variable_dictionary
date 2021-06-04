@@ -23,7 +23,7 @@
         <beanutils.version>1.9.4</beanutils.version>
         <codec.version>1.13</codec.version>
         <lang3.vertion>3.9</lang3.vertion>
-        <httpclient.version>4.5.10</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <httpmime.version>4.3.1</httpmime.version>
         <jsonlib.version>2.4</jsonlib.version>
         <shiro.version>1.4.0</shiro.version>
