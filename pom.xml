@@ -26,7 +26,7 @@
         <httpclient.version>4.5.10</httpclient.version>
         <httpmime.version>4.3.1</httpmime.version>
         <jsonlib.version>2.4</jsonlib.version>
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.7.1</shiro.version>
     </properties>
 
     <dependencies>
